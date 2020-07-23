@@ -29,10 +29,10 @@ public:
         board(numRows, std::vector<Soldier*>(numCols, nullptr)){}
 
         // operator for putting soldiers on the game-board during initialization.
-    Soldier*& operator[](std::pair<int,int> location);
+    Soldier*& operator[](std::pair<int,int> location);//השמה
 
     // operator for reading which soldiers are on the game-board.
-    Soldier* operator[](std::pair<int,int> location) const;
+    Soldier* operator[](std::pair<int,int> location) const;//לקבל בלי אופציה לשנות את החייל את הערכים חיים וכו
 
     // The function "move" tries to move the soldier of player "player"
     //     from the "source" location to the "target" location,
@@ -48,7 +48,7 @@ public:
     void move(uint player_number, std::pair<int,int> source, MoveDIR direction);
 
     // returns true iff the board contains one or more soldiers of the given player.
-    bool has_soldiers(uint player_number) const;
+    bool has_soldiers(uint player_number) const;//נשאר  חיילים וקבוע שאי אפשר לשנות ואז לרמא
     void print_board();
 //    ~Board()
 //    {
