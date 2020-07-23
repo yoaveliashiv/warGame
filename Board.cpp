@@ -4,25 +4,25 @@
 using namespace std;
 #include <iostream>
 namespace WarGame {
-    Soldier *&Board::operator[](std::pair<int, int> location) {
+    Soldier *&Board::operator[](std::pair<int, int> location) {//  השמה ברפרנס
         return board[location.first][location.second];
     }
 
-    Soldier *Board::operator[](std::pair<int, int> location) const {
+    Soldier *Board::operator[](std::pair<int, int> location) const {//לקבל למשתנה בלי יכולת לשנות את הערכים הפנימיים שלו
         return board[location.first][location.second];
     }
 
     void Board::move(uint player_number, std::pair<int, int> source, MoveDIR direction) {
         Soldier *src = board[source.first][source.second];
-        if (src == nullptr) {
+        if (src == nullptr) {//אין חייל במיקום
             throw invalid_argument("No player on source");
         }
-        if (src->get_num_player() != player_number) {
+        if (src->get_num_player() != player_number) {//אם החייל במיקום לא שייך לקבוצה להפונקצייה קיבלה
             throw invalid_argument("Wrong player number");
         }
         // Up, Down, Right, Left
-        pair<int, int> dest;
-        switch (direction) {
+        pair<int, int> dest;//שדה
+        switch (direction) {//לזוז לפי האינמים שמאלה ימינה וכו
             case Up :
                 dest = make_pair(source.first + 1, source.second);
                 break;
@@ -44,9 +44,9 @@ namespace WarGame {
         if (board[dest.first][dest.second] != nullptr) {
             throw invalid_argument("trying to move to a allocated space");
         }
-        board[dest.first][dest.second] = src;
-        board[source.first][source.second] = nullptr;
-        src->Fight(board, dest);
+        board[dest.first][dest.second] = src;//הקידום בפועל
+        board[source.first][source.second] = nullptr;//מוחק מהמיקום הקודם
+        src->Fight(board, dest);//התקפה
     }
 
     void Board::print_board() {
