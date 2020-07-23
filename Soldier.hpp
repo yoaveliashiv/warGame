@@ -9,8 +9,8 @@ class Soldier{
 public:
     int health;
     int damage;
-    int num_player;
-    int max;
+    int num_player;//מספר קבוצה
+    int max;//ערך התחלתי של הבריאות
 
 public:
     Soldier(int h,int d,int num_p,int max):health(h),damage(d),num_player(num_p), max(max){}
@@ -20,8 +20,8 @@ public:
     int get_max(){return max;}
     int get_num_player(){return num_player;}
     virtual void Fight(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> dest)=0;
-
-    virtual ~Soldier(){
+// פונקצייה וירטואלית טהורה : כל קלאס שיורש מכאן חייב לממש את הפונקציה הזאת  פייט בגלל השווה אפס
+    virtual ~Soldier(){//דיסטרקטור
     }
 };
 
