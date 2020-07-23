@@ -11,10 +11,10 @@
 #include <vector>
 
 using  namespace std;
-class FootSoldier:public Soldier{
+class FootSoldier:public Soldier{//יורש מסולדר
 public:
-    FootSoldier(int num_p):Soldier(100,10,num_p,100){}
-     void Fight(vector<vector<Soldier*>> &board, pair<int,int> location)  override ;
+    FootSoldier(int num_p):Soldier(100,10,num_p,100){}//בנאי
+     void Fight(vector<vector<Soldier*>> &board, pair<int,int> location)  override ;//דריסה
 };
 
 #endif //WARGAME_FOOTSOLDIER_HPP
